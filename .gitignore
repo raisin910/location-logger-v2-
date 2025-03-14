@@ -1,0 +1,21 @@
+# Node.js
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# 開発環境
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# エディタ
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS関連
+.DS_Store
+Thumbs.db
