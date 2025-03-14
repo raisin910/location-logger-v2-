@@ -5,7 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>位置情報ロガー V2</title>
     <link rel="stylesheet" href="css/style.css">
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBxDHNz3YciIi5bntA-wTGwEXOLEf10sPo"></script>
+    <!-- 環境変数ファイル -->
+    <script src="env.js"></script>
+    <!-- Google Maps APIは動的にロードします -->
 </head>
 <body>
     <div class="container">
@@ -52,6 +54,40 @@
             バッテリー節約のため、使用しないときはロギングを停止してください。
         </div>
     </div>
+    
+    <script>
+    // Google Maps API を動的にロード
+    function loadGoogleMapsAPI() {
+        // 環境変数または設定済みの値から API キーを取得
+        const apiKey = window.GOOGLE_MAPS_API_KEY || '';
+        
+        if (!apiKey) {
+            console.error('Google Maps API キーが設定されていません');
+            return;
+        }
+        
+        // スクリプトタグを動的に作成
+        const script = document.createElement('script');
+        script.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}`;
+        script.async = true;
+        script.defer = true;
+        
+        // 読み込み完了時のイベント
+        script.onload = function() {
+            console.log('Google Maps API が正常に読み込まれました');
+        };
+        
+        // エラー時のイベント
+        script.onerror = function() {
+            console.error('Google Maps API の読み込みに失敗しました');
+        };
+        
+        document.head.appendChild(script);
+    }
+    
+    // ページ読み込み時に API を読み込む
+    window.addEventListener('DOMContentLoaded', loadGoogleMapsAPI);
+    </script>
     
     <script src="js/app.js"></script>
 </body>
