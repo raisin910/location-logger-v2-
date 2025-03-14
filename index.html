@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>位置情報ロガー V2</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBxDHNz3YciIi5bntA-wTGwEXOLEf10sPo"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>位置情報ロガー V2</h1>
+        
+        <div class="status" id="status">ステータス: 準備完了</div>
+        
+        <div class="controls">
+            <button id="startBtn">ロギング開始</button>
+            <button id="stopBtn" disabled>ロギング停止</button>
+            <button id="sendDataBtn" disabled>データ送信</button>
+            <button id="downloadBtn" disabled>データをダウンロード</button>
+            <button id="showMapBtn" disabled>地図で表示</button>
+        </div>
+        
+        <div class="settings">
+            <div class="form-group">
+                <label for="deviceId">デバイスID:</label>
+                <input type="text" id="deviceId" placeholder="一意のデバイスIDを入力">
+            </div>
+            
+            <div class="form-group">
+                <label for="interval">ロギング間隔 (秒):</label>
+                <input type="number" id="interval" min="10" value="60">
+            </div>
+            
+            <div class="form-group">
+                <label for="sheetUrl">スプレッドシートURL:</label>
+                <input type="text" id="sheetUrl" placeholder="データ送信先のURL">
+            </div>
+        </div>
+        
+        <div class="log" id="logContainer">
+            <div>ログ:</div>
+        </div>
+        
+        <!-- 地図表示エリア -->
+        <div class="map-container" id="mapContainer">
+            <div id="map"></div>
+            <button id="closeMapBtn">×</button>
+        </div>
+        
+        <div class="footer">
+            バッテリー節約のため、使用しないときはロギングを停止してください。
+        </div>
+    </div>
+    
+    <script src="js/app.js"></script>
+</body>
+</html>
