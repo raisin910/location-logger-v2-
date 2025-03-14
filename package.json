@@ -1,0 +1,11 @@
+{
+  "name": "location-logger",
+  "version": "1.0.0",
+  "description": "位置情報ロガーアプリ",
+  "scripts": {
+    "build": "node build.js"
+  },
+  "dependencies": {
+    "fs-extra": "^10.0.0"
+  }
+}
